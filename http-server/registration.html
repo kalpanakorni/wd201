@@ -1,86 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Page</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; }
-    .container { max-width: 400px; margin: 40px auto; background: #fff; padding: 24px 32px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    h2 { text-align: center; margin-bottom: 24px; }
-    label { display: block; margin-bottom: 8px; font-weight: bold; }
-    input[type="text"], input[type="email"], input[type="password"] {
-      width: 100%; padding: 8px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
     }
-    button { width: 100%; padding: 10px; background: #007bff; color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
-    button:hover { background: #0056b3; }
-    .error { color: red; font-size: 14px; margin-top: -10px; margin-bottom: 10px; }
+    form {
+      background: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    input {
+      display: block;
+      width: 100%;
+      margin: 10px 0 20px;
+      padding: 10px;
+      font-size: 1em;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Registration Form</h2>
-    <form id="registrationForm">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
-      <div id="nameError" class="error"></div>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-      <div id="emailError" class="error"></div>
+  <h2 style="text-align:center;">Register</h2>
 
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required minlength="6">
-      <div id="passwordError" class="error"></div>
+  <form id="registrationForm" action="/register" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" required />
 
-      <button type="submit">Register</button>
-    </form>
-  </div>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required />
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required />
+
+    <button type="submit">Register</button>
+  </form>
 
   <script>
-    document.getElementById('registrationForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Clear previous errors
-      document.querySelectorAll('.error').forEach(el => el.textContent = '');
-      
-      // Get form values
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
-      
-      let isValid = true;
-      
-      // Name validation
-      if (name === '') {
-        document.getElementById('nameError').textContent = 'Name is required';
-        isValid = false;
-      }
-      
-      // Email validation
-      if (email === '') {
-        document.getElementById('emailError').textContent = 'Email is required';
-        isValid = false;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        document.getElementById('emailError').textContent = 'Please enter a valid email';
-        isValid = false;
-      }
-      
-      // Password validation
-      if (password === '') {
-        document.getElementById('passwordError').textContent = 'Password is required';
-        isValid = false;
-      } else if (password.length < 6) {
-        document.getElementById('passwordError').textContent = 'Password must be at least 6 characters';
-        isValid = false;
-      }
-      
-      if (isValid) {
-        // Form is valid, you can submit it to a server here
-        alert('Registration successful!');
-        // this.submit(); // Uncomment this to actually submit the form
-      }
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('registrationForm');
+
+      form.addEventListener('submit', function (e) {
+        const username = form.elements['username'].value.trim();
+        const email = form.elements['email'].value.trim();
+        const password = form.elements['password'].value;
+
+        let errorMessages = [];
+
+        if (username === '') {
+          errorMessages.push("Username is required");
+        }
+
+        if (!email.includes('@') || !email.includes('.')) {
+          errorMessages.push("Invalid email address");
+        }
+
+        if (password.length < 6) {
+          errorMessages.push("Password must be at least 6 characters long");
+        }
+
+        if (errorMessages.length > 0) {
+          e.preventDefault(); // Prevent form submission
+          alert(errorMessages.join('\n')); // Show error messages
+        }
+      });
     });
   </script>
+
 </body>
 </html>
