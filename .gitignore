@@ -1,0 +1,14 @@
+# Ignore node_modules in all sub-projects
+hello-world/node_modules/
+http-server/node_modules/
+
+# Ignore logs
+*.log
+npm-debug.log*
+
+# Ignore environment files
+hello-world/.env
+http-server/.env
+
+# Ignore local editor settings
+.vscode/
