@@ -1,92 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registration Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      padding: 20px;
-    }
-    form {
-      background: white;
-      padding: 20px;
-      max-width: 400px;
-      margin: auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    input {
-      display: block;
-      width: 100%;
-      margin: 10px 0 20px;
-      padding: 10px;
-      font-size: 1em;
-    }
-    button {
-      background: #007bff;
-      color: white;
-      padding: 10px;
-      border: none;
-      width: 100%;
-      font-size: 1em;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Home - WD201 Project</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f7f7f7; }
+        .container { max-width: 600px; margin: 40px auto; background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { text-align: center; }
+        nav { text-align: center; margin-top: 2em; }
+        nav a { margin: 0 1em; color: #007bff; text-decoration: none; }
+        nav a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-
-  <h2 style="text-align:center;">Register</h2>
-
-  <form id="registrationForm" action="/register" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required />
-
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required />
-
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required />
-
-    <button type="submit">Register</button>
-  </form>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('registrationForm');
-
-      form.addEventListener('submit', function (e) {
-        const username = form.elements['username'].value.trim();
-        const email = form.elements['email'].value.trim();
-        const password = form.elements['password'].value;
-
-        let errorMessages = [];
-
-        if (username === '') {
-          errorMessages.push("Username is required");
-        }
-
-        if (!email.includes('@') || !email.includes('.')) {
-          errorMessages.push("Invalid email address");
-        }
-
-        if (password.length < 6) {
-          errorMessages.push("Password must be at least 6 characters long");
-        }
-
-        if (errorMessages.length > 0) {
-          e.preventDefault(); // Prevent form submission
-          alert(errorMessages.join('\n')); // Show error messages
-        }
-      });
-    });
-  </script>
-
+    <div class="container">
+        <h1>Welcome to the WD201 Project Home Page</h1>
+        <nav>
+            <a href="project.html">Projects List</a>
+            <a href="registration.html">Register</a>
+        </nav>
+    </div>
 </body>
 </html>
