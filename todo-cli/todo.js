@@ -1,5 +1,10 @@
 const todoList = () => {
   let all = [];
+  // Local formattedDate for date comparison
+  const formattedDate = (d) => {
+    return d.toISOString().split("T")[0];
+  };
+
   const add = (todoItem) => {
     all.push(todoItem);
   };
@@ -27,8 +32,9 @@ const todoList = () => {
     return list
       .map((item) => {
         const checkbox = item.completed ? "[x]" : "[ ]";
+        // Only show date if not today
         const dateDisplay = item.dueDate === today ? "" : ` ${item.dueDate}`;
-        return `${checkbox} ${item.title}${dateDisplay}`.trim();
+        return `${checkbox} ${item.title}${dateDisplay}`;
       })
       .join("\n");
   };
