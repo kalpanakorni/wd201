@@ -5,8 +5,12 @@ describe("Todo List", () => {
   const today = new Date();
   const formattedDate = (d) => d.toISOString().split("T")[0];
   const todayStr = formattedDate(today);
-  const yesterdayStr = formattedDate(new Date(today.setDate(today.getDate() - 1)));
-  const tomorrowStr = formattedDate(new Date(today.setDate(today.getDate() + 2)));
+  const yesterdayStr = formattedDate(
+    new Date(today.setDate(today.getDate() - 1)),
+  );
+  const tomorrowStr = formattedDate(
+    new Date(today.setDate(today.getDate() + 2)),
+  );
 
   beforeEach(() => {
     todos = todoList();
