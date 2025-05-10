@@ -1,5 +1,20 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-npx prettier --check .
-npx jest
+echo " Running pre-commit checks..."
+
+# Change directory to the todo-cli project
+cd todo-cli || exit
+
+echo " Running tests..."
+npm test
+if [ $? -ne 0 ]; then
+  echo " Tests failed - commit aborted"
+  exit 1
+fi
+
+echo " Formatting code..."
+npm run format
+git add .
+
+echo "Pre-commit checks passed!"
