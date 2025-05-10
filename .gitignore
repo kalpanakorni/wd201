@@ -1,10 +1,12 @@
 # Ignore node_modules in all sub-projects
 hello-world/node_modules/
 http-server/node_modules/
+todo-cli/node_modules/
 
 # Ignore logs
 *.log
 npm-debug.log*
+jest-output.json
 
 # Ignore environment files
 hello-world/.env
