@@ -1,45 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Registration Form</title>
-  <style>
-    table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
-      padding: 8px;
-    }
-  </style>
- 
-</head>
-<body>
-  <form id="registrationForm">
-    <label>Name: <input type="text" id="name" required /></label><br />
-    <label>Email: <input type="email" id="email" required /></label><br />
-    <label>Password: <input type="password" id="password" required /></label><br />
-    <label>Date of Birth: <input type="date" id="dob" required /></label><br />
-    <label>
-      <input type="checkbox" id="acceptTerms" />
-      Accept Terms and Conditions
-    </label><br />
-    <button type="submit">Register</button>
-  </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="registrationForm">
+      <label>Name: <input type="text" id="name" required /></label><br />
+      <label>Email: <input type="email" id="email" required /></label><br />
+      <label>Password: <input type="password" id="password" required /></label
+      ><br />
+      <label>Date of Birth: <input type="date" id="dob" required /></label
+      ><br />
+      <label>
+        <input type="checkbox" id="acceptTerms" />
+        Accept Terms and Conditions </label
+      ><br />
+      <button type="submit">Register</button>
+    </form>
 
-  <h2>Registered Users</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Dob</th>
-        <th>Accepted terms?</th>
-      </tr>
-    </thead>
-    <tbody id="userTableBody"></tbody>
-  </table>
- <script src="index.js"></script>
-  
-</body>
+    <h2>Registered Users</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Dob</th>
+          <th>Accepted terms?</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody"></tbody>
+    </table>
+    <script src="index.js"></script>
+  </body>
 </html>
